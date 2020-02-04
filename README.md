@@ -29,7 +29,7 @@ git clone https://github.com/freelyis/placeholder-api
 2. Install dependencies
 
 ```bash
-npm i
+npm ci
 ```
 
 3. Populate the env file
@@ -51,6 +51,6 @@ Run `index.js` with your preferred process monitor (pm2 probably)
 
 | Type |  Route | Parameters |
 |------|--------|------------|
-| POST | /api/submitinterest   | Body ```json { email: 'string' } ``` |
+| POST | /api/submitinterest   | Body ``` { email: 'string' } ``` |
 | GET  | /api/verifyinterest/:UUID   | URL UUID token assigned to the user on signup |
 

@@ -15,7 +15,8 @@ polka()
             try {
                 const code = await verifyUser(req.params.verifToken);
                 if (code === 200) {
-                    send(res, 200, "Thank you for verifying!");
+                    res.writeHead(301, { Location: encodeURI(`${process.env.WEBSITE_BASE}/?verified`) })
+                    res.end()
                 }
                 else {
                     send(res, 404, "That token does not exist.");

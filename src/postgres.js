@@ -26,9 +26,9 @@ const getVerifiedUserCount = async () => {
 
 exports.verifyUser = async (verifUUID) => {
     try {
-        const doc = await pool.query("SELECT * FROM newsletter WHERE token=$1", [verifUUID]);
+        const doc = await pool.query("SELECT * FROM newsletter WHERE verif_token=$1", [verifUUID]);
         if (doc.rows.length === 0) return 400;
-        await pool.query("UPDATE newsletter SET verified=TRUE, token='' WHERE token=$1", [doc.rows[0].token]);
+        await pool.query("UPDATE newsletter SET verified=TRUE, verif_token='' WHERE verif_token=$1", [doc.rows[0].token]);
         await sendSuccessEmail(doc.rows[0].email);
         const currentVerifCount = await getVerifiedUserCount();
         await sendWebhook(doc.rows[0].email, currentVerifCount);
@@ -53,7 +53,7 @@ exports.addUser = async (email) => {
             return 201; // Created entry
         }
         catch (e) {
-            console.error("There was a problem while running addUser", email);
+            console.error("There was a problem while running addUser", email, e);
             throw e;
         }
     }
