@@ -10,12 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-NodeJS (12 preferrably)
-PostgreSQL 11
-SendGrid API key
-Discord webhook URL
-```
+- [Node.js](https://nodejs.org/en/download/) (v12 preferably)
+- [PostgreSQL 11](https://www.postgresql.org/download/)
+- [SendGrid API key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/#creating-an-api-key)
+- [Discord webhook URL](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 
 ### Installing
 
@@ -34,6 +32,12 @@ npm ci
 
 3. Populate the env file
 
+```sh
+cp ./.env.example .env
+nano .env
+```
+
+See `[.env.example`](https://github.com/freelyis/placeholder-api/blob/master/.env.example) for a template config.
 
 ## Running the tests
 
@@ -49,8 +53,11 @@ Run `index.js` with your preferred process monitor (pm2 probably)
 
 ## Routes
 
+The base URL for requests is `https:/freely.is`.
+This can be changed in the `.env` file.
+
 | Type |  Route | Parameters |
 |------|--------|------------|
-| POST | /api/submitinterest   | Body ``` { email: 'string' } ``` |
-| GET  | /api/verifyinterest/:UUID   | URL UUID token assigned to the user on signup |
+| POST | `/api/submitinterest`   | JSON Body ```json { "email": "string" } ``` |
+| GET  | `/api/verifyinterest/:UUID`   | URL UUID token assigned to the user on signup |
 
