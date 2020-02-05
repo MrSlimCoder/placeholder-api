@@ -56,7 +56,7 @@ Run `index.js` with your preferred process monitor (pm2 probably)
 The base URL for requests is `https:/freely.is`.
 This can be changed in the `.env` file.
 
-| Type | Route                       | Parameters                                    |
-| ---- | --------------------------- | --------------------------------------------- |
-| POST | `/api/submitinterest`       | JSON Body `json { "email": "string" }`        |
-| GET  | `/api/verifyinterest/:UUID` | URL UUID token assigned to the user on signup |
+| Type | Route                       | Parameters                                             |
+| ---- | --------------------------- | ------------------------------------------------------ |
+| POST | `/api/submitinterest`       | JSON Body <pre lang="json">{ "email": "string" }</pre> |
+| GET  | `/api/verifyinterest/:UUID` | URL UUID token assigned to the user on signup          |
