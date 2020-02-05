@@ -24,7 +24,8 @@ polka()
             }
             catch (e) {
                 console.error("Verification error", e);
-                send(res, 500, "We encountered an error while verifying your interest.");
+                res.writeHead(301, { Location: encodeURI(`${process.env.WEBSITE_BASE}/?error`) })
+                res.end()
             }
         }
     })
@@ -35,8 +36,8 @@ polka()
             if (code === 201) {
                 send(res, 201, "Successfully signed up!");
             }
-            else if (code === 200) {
-                send(res, 200, "You have already signed up!");
+            else if (code === 409) {
+                send(res, 409, "You have already signed up!");
             }
             else {
                 send(res, 400, "Invalid email!");

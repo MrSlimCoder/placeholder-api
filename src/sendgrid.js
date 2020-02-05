@@ -8,11 +8,12 @@ exports.sendSuccessEmail = async (email) => {
     await mailer.send({
         to: email,
         from: "no-reply@freely.is",
-        subject: "Free.ly Newsletter Sign Up",
-        text: `Hello User!
-        Thank you for your interest in our newsletter. You have been verified.
+        subject: "Thank you for verifying",
+        text: `Hello User, 
+
+        Thank you for verifying your email! We'll keep you updated on news about our beta, and we're looking forward to seeing you on Freely soon.
         
-        Sincerely,
+        Thank you, 
         Freely Team`,
         html: `
             <style>
@@ -25,7 +26,7 @@ exports.sendSuccessEmail = async (email) => {
             </p>
             <br>
             <p>
-                Thank you for your interest in our newsletter. You have been verified.
+                Thank you for verifying your email! We'll keep you updated on news about our beta, and we're looking forward to seeing you on Freely soon.
             </p>
             <br>
             <p>
@@ -41,7 +42,7 @@ exports.sendVerification = async (email, uuid) => {
     await mailer.send({
         to: email,
         from: "no-reply@freely.is",
-        subject: "Free.ly Newsletter Sign Up",
+        subject: "Freely Beta Newsletter",
         text: `Hello User!
         Thank you for your interest in our newsletter. Please click ${process.env.WEBSITE_BASE}/api/verifyinterest/${uuid} to verify your email so we can get you added to our email list for our beta.
         

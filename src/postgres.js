@@ -44,7 +44,7 @@ exports.verifyUser = async (verifUUID) => {
 exports.addUser = async (email) => {
     if (email && validateEmail(email)) {
         const doc = await pool.query("SELECT * FROM newsletter WHERE email=$1", [email]);
-        if (doc.rows.length !== 0) return 200; // User already signed up
+        if (doc.rows.length !== 0) return 409; // User already signed up
         const dbDate = new Date();
         const randomUUID = uuid();
         try {
